@@ -1,15 +1,21 @@
 import React from 'react';
+import axios from 'axios';
 
 class App extends React.Component {
     state = {
         isLoading: true,
         movies: [],
+    };
+    getMovies = async () => {
+        const {
+            data: {
+                data: { movies },
+            },
+        } = await axios.get("https://yts.unblockedproxy.biz/api/v2/list_movies.json");
+        this.setState({ movies, isLoading: false });
     }
     componentDidMount() {
-        // 영화 데이터 로딩!
-        setTimeout(() => {
-            this.setState({ isLoading: false});
-        }, 6000);
+        this.getMovies();
     }
     render() {
         const { isLoading } = this.state;
