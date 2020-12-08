@@ -22,6 +22,16 @@ class App extends React.Component {
         }));
     }
 
+    componentDidMount() {
+        console.log('component rendered');
+    }
+    componentDidUpdate(){
+        console.log('I just updated');
+    }
+    componentWillUnmount() {
+        console.log('Goodbye!')
+    }
+
     render() {
         console.log('render');
         return (
